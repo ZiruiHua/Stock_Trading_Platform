@@ -1,0 +1,48 @@
+{% extends "global/base_pre_login.html" %}
+{% comment %}
+    User registration page of the M.I.T site.
+    Author: Stephen Xie
+{% endcomment %}
+
+{% block page_title %}Register | Mock Internet Trader{% endblock %}
+{% block page_description %}Log in to M.I.T{% endblock %}
+
+{% load static %}
+{% block page_style %}
+    <link rel="stylesheet" href="{% static "css/auth.min.css" %}">
+{% endblock %}
+
+{% block content %}
+    <div class="site-wrapper-inner">
+        <div class="main-container">
+            <div class="inner">
+                <!--
+                {% if form.errors %}
+                    <p>Your username and password didn't match. Please try again.</p>
+                {% endif %}
+                -->
+
+                <form method="post" action="">
+                    {% csrf_token %}
+                    {% for message in status %}
+                    <p class="text-success">{{ message }}</p>
+                    {% endfor %}
+                    <table>
+                        {% for field in form %}
+                            <tr><td><label for="{{ field.name }}">{{ field.label_tag }}</label></td><td>{{ field }}</td><td>{{ field.errors }}</td></tr>
+                        {% endfor %}
+                        <!--
+                        <tr><td><label for="id_username">New Username:</label></td><td>{{ form.username }}</td></tr>
+                        <tr><td><label for="id_password">New Password:</label></td><td>{{ form.password }}</td></tr>
+                        -->
+                    </table>
+
+                    <button class="btn btn-secondary button" type="submit" value="login">Register</button>
+                    <input type="hidden" name="next" value="{{ next }}" />
+                </form>
+
+                <a class="btn btn-info button" href="{% url "login" %}">Have an account?</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

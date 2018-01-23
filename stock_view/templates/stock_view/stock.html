@@ -1,0 +1,103 @@
+{% extends "global/base_post_login.html" %}
+{% load static %}
+
+{% block page_title %}Stock View | Mock Internet Trader{% endblock %}
+{% block page_description %}A short page description{% endblock %}
+{% block page_style %}
+    <link rel="stylesheet" href="{% static "css/stock.view.css" %}">
+{% endblock %}
+
+{% block content %}
+    {% if errors %}
+        {% for error in errors %}
+            <p>{{ error }}</p>
+        {% endfor %}
+    {% else %}
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container-fluid row">
+                <div class="col-9">
+                    <h1 class="company-name">{{ stock_name }}</h1>
+                    <br/>
+                    <span>NASDAQ: {{ stock_symbol }}</span>
+                    <p id="stock-description"></p>
+                </div>
+                <div class="col-3">
+                    <button class="watch-btn btn btn-dark" type="submit" id="watch-stock">{{ stock_watched }}</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-9 section-padding container-fluid">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-4">
+                            <div class="info center-block">
+                                <strong class="text-uppercase">Latest Price</strong>
+                                <br/>
+                                <span class="sub-heading">Per share</span>
+                                <div class="count-number" id="stock_price"></div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <div class="info center-block">
+                                <strong class="text-uppercase">Holds</strong>
+                                <br/>
+                                <span class="sub-heading">Shares</span>
+                                <div class="count-number" id="current-share">{{ current_share }}</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <div class="info center-block">
+                                <strong class="text-uppercase">Buying Power</strong>
+                                <br/>
+                                <span class="sub-heading">Available money</span>
+                                <div class="count-number" id="buying-power">${{ buying_power }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3 section-padding container-fluid">
+                    <div class="buy-in">
+                        <div class="input-group">
+                            <input id="buy-amount" type="text" class="form-control " name="message" placeholder="Amount">
+                            <span class="input-group-btn">
+                                <button class="btn btn-dark" type="submit" id="buy-stock">Buy!</button>
+                            </span>
+                        </div>
+                        <div>Maximum: <span id="max-available">{{ available_shares }}</span></div>
+                    </div>
+                    <br>
+                    <div class="sell-out">
+                        <div class="input-group">
+                            <input id="sell-amount" type="text" class="form-control" name="message" placeholder="Amount">
+                            <span class="input-group-btn">
+                                <button class="btn btn-dark" type="submit" id="sell-stock">Sell!</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-fluid">
+                    <div class="row">
+
+                        <div class="col-lg-4 col-md-12 flex-lg-last flex-md-first align-self-baseline">
+                            <div class="wrapper sales-report">
+                                <h2 class="display h4">Stock Trend</h2>
+                                <div class="line-chart">
+                                    <canvas id="lineChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% load static %}
+{% block page_js %}
+    <script type="text/javascript" src="{% static "js/stock.js" %}" id="stock_symbol" data-symbol="{{ stock_symbol }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+{% endblock %}

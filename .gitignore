@@ -1,0 +1,46 @@
+# IDE related config files
+.idea
+*.iml
+.vscode
+
+# SASS cache files
+.sass-cache
+
+# Django SQLite database
+db.sqlite3
+
+# Pipenv local environment
+.venv
+
+
+# Class-specific section #
+
+
+# Java section #
+*.class
+
+# Django section #
+*.log
+*.pot
+*.pyc
+local_settings.py
+*.py[cod]
+
+# C extensions
+*.so
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+nosetests.xml
+
+# Translations
+*.mo
+
+# Mr Developer
+.mr.developer.cfg
+.project
+.pydevproject

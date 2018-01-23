@@ -1,0 +1,126 @@
+
+/*
+* ==========================================================
+*     GENERAL
+* ==========================================================
+*/
+.text-bold {
+  font-weight: 700;
+}
+
+.text-small {
+  font-size: 0.9rem;
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+  color: #fff;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+i {
+  display: inline-block;
+}
+
+span {
+  display: inline-block;
+}
+
+span {
+  font-size: 0.9em;
+}
+
+p {
+  color: #666;
+}
+
+
+.page {
+  position: absolute;
+  top: 0;
+  right: 0;
+  -webkit-transition: width 0.3s linear;
+  transition: width 0.3s linear;
+  width: calc(100% - 200px);
+  background-color: #F4F7FA;
+  min-height: 100vh;
+  padding-bottom: 50px;
+}
+
+h2 {
+  color: #555;
+  font-weight: 400;
+}
+
+
+.display {
+  font-weight: 400 !important;
+}
+
+
+button {
+  cursor: pointer;
+}
+
+.section-padding {
+  padding: 50px 0;
+}
+
+.section-no-padding-bottom {
+  padding-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .container-fluid {
+    padding: 0 50px;
+  }
+}
+
+/*
+* ==========================================================
+*     CUSTOM
+* ==========================================================
+*/
+
+.company-name {
+    display: inline-block;
+}
+
+.watch-btn {
+    float: right;
+}
+
+.info {
+    font-size: 1em;
+    font-weight: 300;
+    color: #333;
+}
+
+.info .sub-heading {
+    font-size: 0.75em;
+    font-weight: 400;
+    color: #888;
+}
+
+.info .count-number {
+    font-size: 1.2em;
+    color: #111;
+    font-weight: 400;
+}
+
+
+
+
+
+

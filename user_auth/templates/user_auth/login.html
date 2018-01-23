@@ -1,0 +1,39 @@
+{% extends "global/base_pre_login.html" %}
+{% comment %}
+    Sign-in / Starting page of the M.I.T site.
+    Author: Stephen Xie
+{% endcomment %}
+
+{% block page_title %}Login | Mock Internet Trader{% endblock %}
+{% block page_description %}Log in to M.I.T{% endblock %}
+
+{% load static %}
+{% block page_style %}
+    <link rel="stylesheet" href="{% static "css/auth.min.css" %}">
+{% endblock %}
+
+{% block content %}
+    <div class="site-wrapper-inner">
+        <div class="main-container">
+            <div class="inner">
+                {% if form.errors %}
+                    <p>Your username and password didn't match. Please try again.</p>
+                {% endif %}
+
+                <form method="post" action="">
+                    <table>
+                        <tr><td><label for="id_username">Username:</label></td><td>{{ form.username }}</td></tr>
+                        <tr><td><label for="id_password">Password:</label></td><td>{{ form.password }}</td></tr>
+                    </table>
+
+                    <button class="btn btn-secondary button" type="submit" value="login">Sign In</button>
+                    <input type="hidden" name="next" value="{{ next }}" />
+                    {% csrf_token %}
+                </form>
+
+                <a class="btn btn-info button" href="{% url "register" %}">Don't have an account?</a>
+                <a class="btn btn-dark button" href="{% url "password_reset" %}">Forget Password?</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

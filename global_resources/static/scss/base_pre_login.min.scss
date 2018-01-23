@@ -1,0 +1,67 @@
+/*
+Author: Stephen Xie
+*/
+
+// margin width for navbar-expand-lg
+$collapse-width-lg: 992px;
+
+/* web fonts */
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:700');
+
+body {
+  background-color: #FAFAFA;
+}
+
+.navbar {
+  background-color: #607D8B;
+
+  .navbar-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+    padding: 0;
+  }
+
+  @media screen and (min-width: $collapse-width-lg) {
+    /* to center navbar brand when navbar is not collapsed,
+       stretch brand container to screen width, then center
+       text. */
+    .navbar-brand {
+      position: absolute;
+      width: 100%;
+      left: 0;
+      text-align: center;
+      margin:0 auto;
+    }
+
+    .navbar-collapse {
+      /* move buttons and links above navbar-brand to ensure
+         they're clickable */
+      z-index: 1;
+    }
+  }
+
+}
+
+.site-wrapper {
+  margin-top: 4rem;
+}
+
+footer {
+  text-align: center;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+
+  @media screen and (min-height: 500px) {
+    /* stick to the bottom center of the screen
+       when screen is tall enough */
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+  }
+}
+
+a,
+a:hover,
+a:focus {
+  color: black;
+}

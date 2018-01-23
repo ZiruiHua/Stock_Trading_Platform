@@ -1,0 +1,102 @@
+{% extends "global/base_post_login.html" %}
+
+{% block page_title %}Global Dashboard | Mock Internet Trader{% endblock %}
+{% block page_description %}Global dashboard page.{% endblock %}
+{% load static %}
+{% block page_style %}
+
+    <!-- Google fonts - Roboto -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" href="{% static "css/global_dashboard.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/graph.css" %}">
+{% endblock %}
+
+{% block content %}
+    <div class="segment-wrapper">
+        <h2>Leaderboard</h2>
+        <p>See how the world performs.</p>
+        <div class="card-flow">
+            {% for leader in leaders %}
+                <div class='card'>
+                    <div class='card-body'>
+                        <div class='row no-gutters align-items-start'>
+                            <div class='col'>
+                                <div class='row no-gutters'>
+                                    <p><b>User:</b> {{ leader.account.owner.username }}</p>
+                                </div>
+                                <div class='row no-gutters'>
+                                    <p><b>Gross Yield:</b> {{ leader.total_asset }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <p>No record found.</p>
+            {% endfor %}
+
+        </div>
+    </div>
+
+    <div class="segment-wrapper">
+        <h2>Watchlist</h2>
+        <p>Stocks you are watching</p>
+        <div class="card-flow">
+            {% for symbol in symbols %}
+                <div class='card'>
+                    <div class='card-body'>
+                        <div class='row no-gutters align-items-start'>
+                            <div class='col'>
+                                <div class='row no-gutters'>
+                                    <a href="{% url 'stock_view' symbol %}" class='col-auto' style="text-decoration: none">
+                                        {{ symbol }}
+                                    </a>
+                                </div>
+                                <div class='row no-gutters'>
+                                    <div class="line-chart">
+                                        <canvas id="chart-{{ symbol }}"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <p>You haven't watched any stock yet.</p>
+            {% endfor %}
+
+        </div>
+    </div>
+    <div class="segment-wrapper">
+        <h2>Global Trades</h2>
+        <p>What is everyone doing right now?</p>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Username</th>
+                <th>Stock</th>
+                <th>Operation</th>
+                <th>Amount</th>
+                <th>Price</th>
+                <th>Date</th>
+            </tr>
+            </thead>
+
+            <tbody id="trade-stream">
+            {% for record in records %}
+                <tr data-record-id="{{ record.id }}">
+                    {{ record.html | safe }}
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+{% block page_js %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="{% static "js/trade_stream.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/draw_chart.js" %}"></script>
+
+{% endblock %}

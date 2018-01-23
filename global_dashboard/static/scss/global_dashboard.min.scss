@@ -1,0 +1,40 @@
+/*
+Author: Stephen Xie
+*/
+
+// the horizontal info card flow
+.card-flow {
+  display: block;
+  height: 12rem;
+  overflow-x: auto;  // enable horizontal scrolling
+  white-space: nowrap;
+
+  .card {
+    display: inline-block;
+    width: 16rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}
+
+// background of the scrollbar
+.card-flow::-webkit-scrollbar {
+  width: 6px;
+  background-color: #F5F5F5;
+}
+// the draggable scrolling bar of the scrollbar
+.card-flow::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+  background-color: #757575;
+}
+// the empty space beneath the scrolling bar
+.card-flow::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: #F2F2F2;
+}
+
+
+.segment-wrapper {
+  margin-bottom: 2rem;
+}

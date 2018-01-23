@@ -1,0 +1,530 @@
+
+/*
+* ==========================================================
+*     GENERAL
+* ==========================================================
+*/
+.row {
+  margin: 0.3em;
+  padding: 1em;
+}
+.text-bold {
+  font-weight: 700;
+}
+
+.text-small {
+  font-size: 0.9rem;
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+  color: #555;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+i {
+  display: inline-block;
+}
+
+span {
+  display: inline-block;
+}
+
+span {
+  font-size: 0.9em;
+}
+
+p {
+  color: #888;
+}
+
+
+.page {
+  position: absolute;
+  top: 0;
+  right: 0;
+  -webkit-transition: width 0.3s linear;
+  transition: width 0.3s linear;
+  width: calc(100% - 200px);
+  background-color: #F4F7FA;
+  min-height: 100vh;
+  padding-bottom: 50px;
+}
+
+.page.active {
+  width: calc(100% - 70px);
+}
+
+.login-page,
+.register-page {
+  width: 100%;
+}
+
+h2 {
+  color: #555;
+  font-weight: 400;
+}
+
+
+.display {
+  font-weight: 400 !important;
+}
+
+
+button {
+  cursor: pointer;
+}
+
+.section-padding {
+  padding: 50px 0;
+}
+
+.section-no-padding-bottom {
+  padding-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .container-fluid {
+    padding: 0 50px;
+  }
+}
+
+
+/*
+* ==========================================================
+*      DASHBOARD COUNTS
+* ==========================================================
+*/
+section.dashboard-counts {
+  color: #333;
+}
+
+section.dashboard-counts .count-title span {
+  font-size: 0.8em;
+  color: #aaa;
+  display: block;
+}
+
+section.dashboard-counts .count-title i {
+  font-size: 1.5em;
+  color: #33b35a;
+}
+
+section.dashboard-counts .icon {
+  margin-right: 10px;
+}
+
+section.dashboard-counts strong {
+  font-size: 0.9em;
+  font-weight: 500;
+  color: #555;
+  display: block;
+}
+
+section.dashboard-counts .count-number {
+  font-size: 2.2em;
+  font-weight: 300;
+}
+
+/* DASHBOARD COUNTS MEDIAQUERIES ------------------------- */
+@media (max-width: 991px) {
+  section.dashboard-counts div[class*='col-'] {
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  section.dashboard-counts strong {
+    font-size: 1em;
+  }
+  section.dashboard-counts span {
+    font-size: 0.9em;
+  }
+  section.dashboard-counts .count-number {
+    font-size: 3em;
+  }
+}
+
+/*
+* ==========================================================
+*     DASHBOARD HEADER
+* ==========================================================
+*/
+section.dashboard-header {
+  background: #fff;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+section.dashboard-header .check-lists {
+  margin-top: 20px;
+}
+
+section.dashboard-header .check-lists label {
+  font-size: 0.75em;
+}
+
+section.dashboard-header #pieChart {
+  max-width: 300px !important;
+  max-height: 300px !important;
+  margin: 0 auto;
+}
+section.dashboard-header #barChart {
+  max-width: 300px !important;
+  max-height: 300px !important;
+  margin: 0 auto;
+}
+section.dashboard-header p {
+  font-size: 0.75em;
+  font-weight: 400;
+  color: #888;
+}
+
+section.dashboard-header li {
+  margin-bottom: 10px;
+}
+
+
+
+/*
+* ==========================================================
+*      STATISTICS
+* ==========================================================
+*/
+section.statistics {
+  /* User Activity ------------- */
+}
+
+section.statistics div[class*='col-'] .wrapper {
+  background: #fff;
+  -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  height: 100%;
+}
+
+section.statistics h2 {
+  margin-bottom: 20px;
+}
+
+section.statistics p {
+  font-size: 0.8em;
+  color: #999;
+  margin-bottom: 5px;
+}
+
+section.statistics .income .icon {
+  font-size: 3.5em;
+}
+
+section.statistics .income .number {
+  font-size: 2.5em;
+  color: #555;
+}
+
+section.statistics .income strong {
+  font-size: 1.5em;
+}
+
+section.statistics .data-usage canvas {
+  width: 100%;
+  max-width: 200px;
+  border: none;
+}
+
+section.statistics .data-usage strong {
+  font-size: 1.5em;
+  display: block;
+}
+
+section.statistics .data-usage small {
+  font-size: 0.85em;
+  font-weight: 300;
+  color: #aaa;
+}
+
+section.statistics .data-usage span {
+  font-size: 0.95em;
+  color: #aaa;
+  display: block;
+}
+
+section.statistics .data-usage p {
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+section.statistics .user-activity .number {
+  font-size: 2.5em;
+  font-weight: 300;
+  color: #555;
+}
+
+section.statistics .user-activity .progress {
+  border-radius: 0;
+  background: #f5f5f5;
+}
+
+section.statistics .user-activity .progress .progress-bar.bg-primary {
+  background: #33b35a !important;
+}
+
+section.statistics .user-activity .page-statistics {
+  margin-top: 20px;
+}
+
+section.statistics .user-activity .page-statistics strong {
+  display: block;
+  text-transform: uppercase;
+  color: #33b35a;
+  font-size: 2em;
+}
+
+
+/*
+* ==========================================================
+*     LINE CHART
+* ==========================================================
+*/
+.line-chart-example .card-block {
+  padding: 20px;
+}
+
+
+/*
+* ==========================================================
+*     PIE CHART
+* ==========================================================
+*/
+.pie-chart-example canvas {
+  max-width: 350px;
+  max-height: 350px;
+  margin: 20px auto;
+}
+/*
+* ==========================================================
+*     BAR CHART
+* ==========================================================
+*/
+
+.bar-chart-example canvas {
+  max-width: 350px;
+  max-height: 350px;
+  margin: 20px auto;
+}
+
+/*
+* ==========================================================
+*     RADAR CHART
+* ==========================================================
+*/
+.radar-chart-example .card-block canvas {
+  max-width: 350px;
+  max-height: 350px;
+  margin: 20px auto;
+}
+
+
+h1,
+.h1 {
+  font-size: 1.5rem;
+}
+
+h2,
+.h2 {
+  font-size: 1.3rem;
+}
+
+h3,
+.h3 {
+  font-size: 1.2rem;
+}
+
+h4,
+.h4 {
+  font-size: 1.1rem;
+}
+
+h5,
+.h5 {
+  font-size: 0.9rem;
+}
+
+h6,
+.h6 {
+  font-size: 0.8rem;
+}
+
+.lead {
+  font-size: 1.25rem;
+  font-weight: 300;
+}
+
+.display-1 {
+  font-size: 6rem;
+  font-weight: 300;
+  line-height: 1.1;
+}
+
+.display-2 {
+  font-size: 5.5rem;
+  font-weight: 300;
+  line-height: 1.1;
+}
+
+.display-3 {
+  font-size: 4.5rem;
+  font-weight: 300;
+  line-height: 1.1;
+}
+
+.display-4 {
+  font-size: 3.5rem;
+  font-weight: 300;
+  line-height: 1.1;
+}
+
+hr {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+small,
+.small {
+  font-size: 80%;
+  font-weight: normal;
+}
+
+mark,
+.mark {
+  padding: 0.2em;
+  background-color: #fcf8e3;
+}
+
+.blockquote {
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  border-left: 5px solid #33b35a;
+}
+
+.blockquote-footer {
+  color: #868e96;
+}
+
+.blockquote-footer::before {
+  content: "\2014 \00A0";
+}
+
+.text-primary {
+  color: #33b35a !important;
+}
+
+a.text-primary:focus, a.text-primary:hover {
+  color: #288b46 !important;
+}
+/*
+* ==========================================================
+*      UPDATES SECTION
+* ==========================================================
+*/
+section.updates div[class*="col-"] > div {
+  background: #fff;
+  -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+section.updates .left-col {
+  padding-right: 20px;
+}
+
+section.updates .card-header {
+  height: 50px;
+  background: #fff;
+  border-top: none;
+  border-bottom-color: #f3f3f3;
+}
+
+section.updates .card-header h2 {
+  color: #555;
+}
+
+section.updates .icon {
+  margin-right: 10px;
+}
+
+section.updates li {
+  border-bottom: 1px solid #f3f3f3;
+  padding: .75rem 1.25rem;
+}
+
+section.updates .update-date {
+  font-size: 1.3em;
+  font-weight: 700;
+  color: #bbb;
+  display: block;
+}
+
+section.updates span {
+  font-size: 0.7em;
+  font-weight: 300;
+  color: #aaa;
+  line-height: 0.5em;
+  display: block;
+}
+
+section.updates strong {
+  font-weight: 400;
+  color: #555;
+  font-size: 0.9em;
+}
+
+section.updates small {
+  font-size: 0.75em;
+}
+
+section.updates a {
+  color: #555;
+}
+
+section.updates a:hover, section.updates a:focus {
+  color: #555;
+  text-decoration: none;
+}
+
+section.updates h2 {
+  margin-bottom: 0;
+}
+
+section.updates p {
+  font-size: 0.9em;
+  color: #999;
+  margin-bottom: 5px;
+}
+
+/* UPDATES MEDIAQUERIES ------------------------- */
+@media (max-width: 991px) {
+  section.updates h2 {
+    font-size: 1.05rem;
+  }
+  section.updates strong {
+    font-size: 1em;
+    font-weight: 400;
+  }
+  section.updates small {
+    font-size: 0.85em;
+  }
+  section.updates .full-date {
+    font-size: 0.85em;
+  }
+}

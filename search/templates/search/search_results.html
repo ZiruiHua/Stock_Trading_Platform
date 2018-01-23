@@ -1,0 +1,16 @@
+﻿{% extends "global/base_post_login.html" %}
+
+{% block content %}
+<h1>Search results for "{{ query }}"</h1>
+{% for r in results %}
+<div>
+    <a href="{% url 'stock_view' r.symbol %}" class="text-primary">{{ r.name }} [{{ r.symbol }}]</a>
+    <p>{{ r.company_description }}</p>
+</div>
+{% endfor %}
+{% endblock %}
+
+{% block page_js %}
+{% load staticfiles %}
+
+{% endblock %}

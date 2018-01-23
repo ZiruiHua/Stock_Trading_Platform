@@ -1,0 +1,23 @@
+﻿.carousel {
+    overflow: hidden;
+    max-height: 400px;
+    background-color: black;
+}
+
+.carousel-item {
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+.carousel-caption {
+    top: 30%;
+    transform: translateY(-30%);
+    bottom: initial;
+}
+
+.carousel-inner img {
+    width: auto;
+    object-fit: cover;
+    margin: 0 auto;
+}

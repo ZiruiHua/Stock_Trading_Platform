@@ -1,0 +1,119 @@
+/*
+Author: Stephen Xie
+*/
+
+// margin width for navbar-expand-lg
+$collapse-width-lg: 992px;
+$search-bar-color: #6E7B87;
+
+/* web fonts */
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:700');
+
+body {
+  background-color: #FAFAFA;
+}
+
+.navbar {
+  background-color: #607D8B;
+
+  .navbar-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+    padding: 0;
+  }
+
+  .nav-input-group {
+    position: relative;  /* required so that the icon can be placed on top of input */
+
+    @media screen and (max-width: $collapse-width-lg) {
+      /* when the input group is collapsed, leave some room between it and the toggle button */
+      margin-top: 10px;
+    }
+
+    .icon {
+      position: absolute;
+      color: $search-bar-color;
+      top: 13%;
+      z-index: 1;
+      margin-left: 12px;
+
+      ///* add a separate line to the right*/
+      //border-right: solid 1px;
+      //border-color: $search-bar-color;
+      //padding-right: 10px;
+
+    }
+
+    input {
+      border: none;
+      background-color: #ECEFF1;
+      padding-left: 47px;  /* make room for the icon */
+      padding-right: 40px;  /* and the menu button as well */
+
+      @media screen and (min-width: $collapse-width-lg) {
+        min-width: 700px;
+      }
+      @media screen and (max-width: $collapse-width-lg) {
+        /* input area takes full screen width when collapsed */
+        min-width: 100%;
+      }
+
+      /* add transition effect when background color changes */
+      -webkit-transition: background .55s ease;
+      -moz-transition: background .55s ease;
+      -ms-transition: background .55s ease;
+      -o-transition: background .55s ease;
+      transition: background .55s ease;
+    }
+
+    input:hover,
+    input:focus,
+    input:active {
+      /* background of input area should be white when active */
+      background-color: #FFFFFF;
+    }
+
+    a {
+      background: none;
+      border: none;
+      outline: none;
+      color: $search-bar-color;
+      z-index: 1;
+
+      // placed inside the right-hand side of the input box
+      float: right;
+      margin-right: 10px;
+      margin-top: -26px;
+    }
+
+    a:hover,
+    a:focus,
+    a:active {
+      text-decoration: none;
+    }
+
+  }
+
+}
+
+.site-wrapper {
+  margin-top: 4rem;
+  padding: 1rem 2rem;
+}
+
+footer {
+  text-align: center;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+
+  // stick to the bottom center of the screen
+  //position: fixed;
+  //width: 100%;
+  //bottom: 0;
+}
+
+a,
+a:hover,
+a:focus {
+  color: black;
+}

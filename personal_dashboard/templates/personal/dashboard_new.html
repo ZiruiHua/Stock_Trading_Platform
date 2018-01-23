@@ -1,0 +1,162 @@
+{% extends "global/base_post_login.html" %}
+{% load static %}
+{% block page_style %}
+    <script src="http://code.gijgo.com/1.6.1/js/gijgo.js" type="text/javascript"></script>
+    <link href="http://code.gijgo.com/1.6.1/css/gijgo.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="{% static "css/personal_dashboard.css" %}">
+{% endblock %}
+{% block content %}
+    {#    <div><h2>Hello: @{{ username }}</h2></div>#}
+    <!-- Counts Section -->
+    <section class="dashboard-counts section-padding">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-3 col-md-4 col-6">
+                    <div class="wrapper count-title d-flex">
+                        <div class="icon"><i class="icon-user"></i></div>
+                        <div class="name"><strong class="text-uppercase">Buying
+                            Power</strong><span>Available Money</span>
+                            <div class="count-number">${{ buying_power }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-4 col-6">
+                    <div class="wrapper count-title d-flex">
+                        <div class="icon"><i class="icon-padnote"></i></div>
+                        <div class="name"><strong class="text-uppercase"><a href="{% url "global" %}">Rank
+                        </a></strong><span>See your performance among other users</span>
+                            <div class="count-number">{{ rank }}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-4 col-6">
+                    <div class="wrapper count-title d-flex">
+                        <div class="icon"><i class="icon-check"></i></div>
+                        <div class="name"><strong class="text-uppercase">Total
+                            asset</strong><span>Money you own now</span>
+                            <div class="count-number" id="total-asset"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-4 col-6">
+                    <div class="wrapper count-title d-flex">
+                        <div class="icon"><i class="icon-check"></i></div>
+                        <div class="name"><strong class="text-uppercase">Holding</strong><span>How many stocks you hold now</span>
+                            <div class="count-number">{{ stock_count }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Header Section-->
+    <section class="dashboard-header section-padding">
+        <div class="container-fluid">
+            <div class="row d-flex align-items-md-stretch">
+                <!-- Bar Chart-->
+
+                <div class="col-lg-4 col-md-12 flex-lg-last flex-md-first align-self-baseline">
+                    <div class="wrapper sales-report">
+                        <h2 class="display h4">Holding Details</h2>
+                        <p> Stock and its shares you are holding</p>
+                        <div class="pie-chart">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>Stock</th>
+                                    <th>Share(s)</th>
+                                    <th>Cost</th>
+                                    <th>Indicator</th>
+                                </tr>
+                                </thead>
+
+                                <tbody id="tbody">
+                                {% for hold in holds %}
+                                    <tr id="tr-{{ hold.stock.symbol }}">
+                                        <td>
+                                            <a href="{% url 'stock_view' hold.stock.symbol %}">{{ hold.stock.symbol }}</a>
+                                        </td>
+                                        <td>{{ hold.shares }}</td>
+                                        <td>{{ hold.average_cost }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                            {#                            <canvas id="barChart"></canvas>#}
+                        </div>
+                    </div>
+                </div>
+                <!-- Pie Chart-->
+                <div class="col-lg-4 col-md-12 flex-lg-last flex-md-first align-self-baseline">
+                    <div class="wrapper project-progress">
+                        <h2 class="display h4">Investment Distribution</h2>
+                        <p> Stocks you are holding now and its percentage</p>
+                        <div class="pie-chart">
+                            <canvas id="pieChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Line Chart -->
+                <div class="col-lg-4 col-md-12 flex-lg-last flex-md-first align-self-baseline">
+                    <div class="wrapper sales-report">
+                        <h2 class="display h4">Total Asset Trend</h2>
+                        <p> Your Currently Total Asset</p>
+                        <div class="line-chart">
+                            <canvas id="lineChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="updates section-padding">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-8 col-md-12">
+                    <div id="new-updates" class="wrapper recent-updated">
+                        <div id="updates-header" class="card-header d-flex justify-content-between align-items-center">
+                            <h2 class="h3 display"><a data-toggle="collapse" data-parent="#new-updates"
+                                                      href="#updates-box" aria-expanded="true"
+                                                      aria-controls="updates-box">Transactions</a></h2><a
+                                data-toggle="collapse" data-parent="#new-updates" href="#updates-box"
+                                aria-expanded="true" aria-controls="updates-box"><i class="fa fa-angle-down"></i></a>
+                        </div>
+                        <form method="POST" role="form">
+                        <div class="row" >
+
+                            <label for="datepicker" class="col-2 col-form-label">Date</label>
+                            <div class="col-6">
+                                <input class="form-control" id="datepicker" width="276"/>
+                            </div>
+                            <div>
+                                <button type="button" class="btn btn-light" id="btn_date">Submit</button>
+                            </div>
+                        </div>
+                            {% csrf_token %}
+                        </form>
+                        <script>
+                            $('#datepicker').datepicker({
+                                uiLibrary: 'bootstrap4',
+                                iconsLibrary: 'fontawesome'
+                            });
+                        </script>
+                        <div id="updates-box" role="tabpanel" class="collapse show">
+                            <ul class="news list-unstyled" id="transactions">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block page_js %}
+    <script src="{% static 'js/dashboard_chart.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+{% endblock %}
+{% block page_js2 %}
+{% endblock %}
